@@ -32,6 +32,7 @@
         }
     },
     "graphical_properties":{
+        "bounding_box":[52,16],
         "texture_path":["tram.png"],
         "texture_parameters":{
             "w_layer":64,

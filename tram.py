@@ -45,6 +45,8 @@ class Tram():
         self.thread.start()
     
     def cycle(self,world):
+        global track_switch_states
+
         roll_friction = 0.05
         slip_friction = 0.2
         free_fall_acceleration = 9.86

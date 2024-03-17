@@ -4,12 +4,38 @@ import threading
 import socket
 import time
 import pygame as pg
+import pathlib
+
+from tram import Tram
 
 MAX_CLIENTS = 10
 clients = []
 objects = []
+trams = []
 send_objects = []
 running = True
+
+world = {}
+#world = {(2,5):"house",(3,5):"house",(4,5):"house_widewindows",(5,5):"house",(6,5):"house"}
+world[(0,0)] = "track_straight_horizontal"
+world[(0,6)] = "track_straight_horizontal"
+world[(-3,3)] = "track_straight_vertical"
+world[(3,3)] = "track_straight_vertical"
+world[(-2,1)] = "track_diagonal_a"
+world[(2,1)] = "track_diagonal_b"
+world[(-2,5)] = "track_diagonal_b"
+world[(2,5)] = "track_diagonal_a"
+world[(-1,0)] = "track_curve_8"
+world[(1,0)] = "track_curve_3"
+world[(-1,6)] = "track_curve_7"
+world[(1,6)] = "track_curve_4"
+world[(-3,2)] = "track_curve_1"
+world[(3,2)] = "track_curve_2"
+world[(-3,4)] = "track_curve_6"
+world[(3,4)] = "track_curve_5" 
+
+world[(8,0)] = "track_curve_3"
+world[(9,1)] = "track_curve_2"
 
 port =8008 #int(input("Port>"))
 
@@ -24,6 +50,18 @@ except Exception as exc:
     exit()
 server_socket.listen(1)
 
+tram_info = {}
+CURRENT_DIRECTORY = pathlib.Path(__file__).parent.resolve()
+
+trams_filenames = os.listdir(os.path.join(CURRENT_DIRECTORY,"trams"))
+for tram_folder in trams_filenames:
+    #try:
+    folder_contents = os.listdir(os.path.join(CURRENT_DIRECTORY,"trams",tram_folder))
+    if "tram.json" in folder_contents:
+        with open(os.path.join(CURRENT_DIRECTORY,"trams",tram_folder,"tram.json")) as file:
+            info = json.loads(file.read())
+            key = info["system_name"]
+            tram_info[key] = info
 
 class Client:
     def __init__(self,socket,id):
@@ -32,11 +70,12 @@ class Client:
         self.pos = [0,0]
         self.angle = 0
         self.running = True
+        self.controlling = -1
         self.thread = threading.Thread(target=self.cycle)
         self.thread.start()
 
     def cycle(self):
-        global clients,objects
+        global clients,objects, trams
 
         while self.running: 
             received = ""
@@ -52,14 +91,29 @@ class Client:
 
             self.pos = received["pos"]
             self.angle = received["angle"]
-            send_objects = []
+            self.controlling = received["controlling"]
+            received_tram = received["tram"]
+
+            if self.controlling != -1 and received_tram != []:
+                trams[self.controlling] = received_tram
+
+            send = {"objects":[],"tram":None}
             for object in objects:
-                send_objects.append({"type":object.type,"pos":object.pos,"angle":object.angle})
+                send["objects"].append({"type":object.type,"pos":object.pos,"angle":object.angle})
+
+            for tram in trams:
+                send["objects"].append({"type":tram.type,"pos":tram.pos,"angle":tram.angle})
+
             for object in clients:
                 if object != self:
-                    send_objects.append({"type":"player","pos":object.pos,"angle":object.angle})
+                    send["objects"].append({"type":"player","pos":object.pos,"angle":object.angle})
+            
+            if self.controlling != -1:
+                send["tram"]= trams[self.controlling]
 
-            self.socket.send((json.dumps(send_objects)+"=").encode())
+            print(send)
+
+            self.socket.send((json.dumps(send)+"=").encode())
 
 class Object:
     def __init__(self,pos,obj_type):
@@ -77,7 +131,7 @@ class Object:
             time.sleep(1/60)
 
 def cycle():
-    global clients,objects,running,send_objects
+    global clients,objects,running,send_objects,trams
     
     while running:
         send_objects = []
@@ -91,6 +145,7 @@ def cycle():
             print(f"[INFO] dropping player {clients[pos].nickname}")
             clients.pop(pos)
 
+trams.append(Tram([64,64],world,tram_info["ktm5m4"]))
 
 global_thread = threading.Thread(target=cycle)
 global_thread.start()
