@@ -45,6 +45,17 @@
             "layer_amount":1
         },
         {
+            "name":"ui_switch_normal",
+            "file_name":"tracks",
+            "x":64,
+            "y":0,
+            "w":32,
+            "h":32,
+            "w_layer":32,
+            "h_layer":32,
+            "layer_amount":1
+        },
+        {
             "name":"track_curve_1",
             "file_name":"tracks",
             "x":0,
@@ -148,6 +159,105 @@
             "file_name":"tracks",
             "x":378,
             "y":32,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"track_switch_1",
+            "file_name":"tracks",
+            "x":0,
+            "y":74,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"track_switch_2",
+            "file_name":"tracks",
+            "x":42,
+            "y":74,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"track_switch_3",
+            "file_name":"tracks",
+            "x":84,
+            "y":74,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"track_switch_4",
+            "file_name":"tracks",
+            "x":126,
+            "y":74,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"track_switch_5",
+            "file_name":"tracks",
+            "x":168,
+            "y":74,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"track_switch_6",
+            "file_name":"tracks",
+            "x":210,
+            "y":74,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"track_switch_7",
+            "file_name":"tracks",
+            "x":252,
+            "y":74,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"track_switch_8",
+            "file_name":"tracks",
+            "x":294,
+            "y":74,
+            "w":42,
+            "h":42,
+            "w_layer":42,
+            "h_layer":42,
+            "layer_amount":1
+        },
+        {
+            "name":"ui_switch_alt",
+            "file_name":"tracks",
+            "x":336,
+            "y":74,
             "w":42,
             "h":42,
             "w_layer":42,

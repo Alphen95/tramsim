@@ -6,7 +6,7 @@ import pathlib
 #from player import Player
 from tram import Tram
 
-version = "0.4"
+version = "0.4.5"
 CURRENT_DIRECTORY = pathlib.Path(__file__).parent.resolve()
 current_dir = CURRENT_DIRECTORY
 MAPPING = [(8, -8), (7, -8), (8, -7), (6, -8), (7, -7), (8, -6), (5, -8), (6, -7), (7, -6), (8, -5), (4, -8), (5, -7), (6, -6), (7, -5), (8, -4), (3, -8), (4, -7), (5, -6), (6, -5), (7, -4), (8, -3), (2, -8), (3, -7), (4, -6), (5, -5), (6, -4), (7, -3), (8, -2), (1, -8), (2, -7), (3, -6), (4, -5), (5, -4), (6, -3), (7, -2), (8, -1), (0, -8), (1, -7), (2, -6), (3, -5), (4, -4), (5, -3), (6, -2), (7, -1), (8, 0), (-1, -8), (0, -7), (1, -6), (2, -5), (3, -4), (4, -3), (5, -2), (6, -1), (7, 0), (8, 1), (-2, -8), (-1, -7), (0, -6), (1, -5), (2, -4), (3, -3), (4, -2), (5, -1), (6, 0), (7, 1), (8, 2), (-3, -8), (-2, -7), (-1, -6), (0, -5), (1, -4), (2, -3), (3, -2), (4, -1), (5, 0), (6, 1), (7, 2), (8, 3), (-4, -8), (-3, -7), (-2, -6), (-1, -5), (0, -4), (1, -3), (2, -2), (3, -1), (4, 0), (5, 1), (6, 2), (7, 3), (8, 4), (-5, -8), (-4, -7), (-3, -6), (-2, -5), (-1, -4), (0, -3), (1, -2), (2, -1), (3, 0), (4, 1), (5, 2), (6, 3), (7, 4), (8, 5), (-6, -8), (-5, -7), (-4, -6), (-3, -5), (-2, -4), (-1, -3), (0, -2), (1, -1), (2, 0), (3, 1), (4, 2), (5, 3), (6, 4), (7, 5), (8, 6), (-7, -8), (-6, -7), (-5, -6), (-4, -5), (-3, -4), (-2, -3), (-1, -2), (0, -1), (1, 0), (2, 1), (3, 2), (4, 3), (5, 4), (6, 5), (7, 6), (8, 7), (-8, -8), (-7, -7), (-6, -6), (-5, -5), (-4, -4), (-3, -3), (-2, -2), (-1, -1), (0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (-8, -7), (-7, -6), (-6, -5), (-5, -4), (-4, -3), (-3, -2), (-2, -1), (-1, 0), (0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (-8, -6), (-7, -5), (-6, -4), (-5, -3), (-4, -2), (-3, -1), (-2, 0), (-1, 1), (0, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 7), (6, 8), (-8, -5), (-7, -4), (-6, -3), (-5, -2), (-4, -1), (-3, 0), (-2, 1), (-1, 2), (0, 3), (1, 4), (2, 5), (3, 6), (4, 7), (5, 8), (-8, -4), (-7, -3), (-6, -2), (-5, -1), (-4, 0), (-3, 1), (-2, 2), (-1, 3), (0, 4), (1, 5), (2, 6), (3, 7), (4, 8), (-8, -3), (-7, -2), (-6, -1), (-5, 0), (-4, 1), (-3, 2), (-2, 3), (-1, 4), (0, 5), (1, 6), (2, 7), (3, 8), (-8, -2), (-7, -1), (-6, 0), (-5, 1), (-4, 2), (-3, 3), (-2, 4), (-1, 5), (0, 6), (1, 7), (2, 8), (-8, -1), (-7, 0), (-6, 1), (-5, 2), (-4, 3), (-3, 4), (-2, 5), (-1, 6), (0, 7), (1, 8), (-8, 0), (-7, 1), (-6, 2), (-5, 3), (-4, 4), (-3, 5), (-2, 6), (-1, 7), (0, 8), (-8, 1), (-7, 2), (-6, 3), (-5, 4), (-4, 5), (-3, 6), (-2, 7), (-1, 8), (-8, 2), (-7, 3), (-6, 4), (-5, 5), (-4, 6), (-3, 7), (-2, 8), (-8, 3), (-7, 4), (-6, 5), (-5, 6), (-4, 7), (-3, 8), (-8, 4), (-7, 5), (-6, 6), (-5, 7), (-4, 8), (-8, 5), (-7, 6), (-6, 7), (-5, 8), (-8, 6), (-7, 7), (-6, 8), (-8, 7), (-7, 8), (-8, 8)]
@@ -21,6 +21,9 @@ with open(os.path.join(CURRENT_DIRECTORY,"res","sprite_list.json")) as f:
     sprite_list = json.loads(f.read())
 
 world = {}
+#world = {(-1, 1): 'track_straight_horizontal', (0, 1): 'track_straight_horizontal', (-1, -2): 'track_straight_horizontal', (0, -2): 'track_straight_horizontal', (-3, -2): 'track_straight_horizontal', (-3, 1): 'track_straight_horizontal', (2, 1): 'track_straight_horizontal', (2, -2): 'track_straight_horizontal', (-5, -1): 'track_curve_1', (-3, -1): 'track_curve_1', (2, -1): 'track_curve_2', (4, -1): 'track_curve_2', (-5, 0): 'track_curve_6', (-3, 0): 'track_curve_6', (2, 0): 'track_curve_5', (4, 0): 'track_curve_5', (-4, 1): 'track_curve_7', (-4, -2): 'track_curve_8', (3, -2): 'track_curve_3', (3, 1): 'track_curve_4', (1, 1): 'track_switch_4', (1, -2): 'track_switch_3', (-2, 1): 'track_switch_7', (-2, -2): 'track_switch_8'}
+track_switch_states = {} #{(1, 1): False, (1, -2): False, (-2, 1): False, (-2, -2): False}
+
 #world = {(2,5):"house",(3,5):"house",(4,5):"house_widewindows",(5,5):"house",(6,5):"house"}
 
 
@@ -33,7 +36,7 @@ objects = []
 player_pos = [0,0]
 camera_pos = [0,0]
 debug = 0
-controlling_tram_id = 0
+controlling_tram_id = -1
 
 sprites = {}
 tram_info = {}
@@ -42,8 +45,12 @@ controlled_tram = []
 
 editing_tab = 0
 tool = -1
+tools = [
+    ["track_straight_horizontal","track_straight_vertical","track_diagonal_a","track_diagonal_b"],
+    ["track_curve_1","track_curve_2","track_curve_3","track_curve_4","track_curve_5","track_curve_6","track_curve_7","track_curve_8"],
+    ["track_switch_1","track_switch_2","track_switch_3","track_switch_4","track_switch_5","track_switch_6","track_switch_7","track_switch_8"]
+]
 
-track_switch_states = []
 
 trams_filenames = os.listdir(os.path.join(CURRENT_DIRECTORY,"trams"))
 for tram_folder in trams_filenames:
@@ -147,8 +154,6 @@ for sprite_params in sprite_list["objects"]:
     sprites[sprite_params["name"]]["height"] = sprite_params["layer_amount"]*sprite_stack_factor-1
 
 working = True
-#trams.append(Tram([64,64],world,tram_info["ktm5m4"]))
-controlling_tram_id = -1
 
 while working:
     keydowns = []
@@ -164,6 +169,7 @@ while working:
     pressed = pg.key.get_pressed()
     m_btn = pg.mouse.get_pressed()
     m_pos = pg.mouse.get_pos()
+    m_block_pos = (int((m_pos[0]+camera_pos[0]-w/2)/128)-(1 if (m_pos[0]+camera_pos[0]-w/2) < 0 else 0),int((m_pos[1]+camera_pos[1]-h/2)/128)-(1 if (m_pos[1]+camera_pos[1]-h/2) < 0 else 0))
 
 
     objects = []
@@ -193,12 +199,25 @@ while working:
                 if block_pos in world:
                     tile = world[block_pos]
                     if tile == "track_straight_horizontal":
-                        trams.append(Tram([block_pos[0]*128+64,block_pos[1]*128+64],world,tram_info["ktm5m4"]))
+                        trams.append(Tram([block_pos[0]*128+64,block_pos[1]*128+64],world,tram_info["ktm5m4"],track_switch_states))
+                    if tile == "track_straight_vertical":
+                        trams.append(Tram([block_pos[0]*128+64,block_pos[1]*128+64],world,tram_info["ktm5m4"],track_switch_states))
+                        trams[-1].angle = 90
 
             if mouse_clicked:
+                chose_tram = False
                 for number, tram in enumerate(trams):
                     if m_pos[0]-w/2 > tram.pos[0]-camera_pos[0]-48 and m_pos[0]-w/2 < tram.pos[0]-camera_pos[0]+48 and m_pos[1]-h/2 > tram.pos[1]-camera_pos[1]-48 and m_pos[1]-h/2 < tram.pos[1]-camera_pos[1]+48:
                         controlling_tram_id = number
+                        chose_tram = True
+                        break
+
+                if not chose_tram:
+                    if m_btn[0] and m_block_pos in track_switch_states:
+                        track_switch_states[m_block_pos] = not(track_switch_states[m_block_pos])
+                        for tram in trams:
+                            tram.track_switch_states = track_switch_states
+
 
 
         else:
@@ -212,35 +231,42 @@ while working:
                 controlled_tram.km_pos -= 1 if controlled_tram.parameters["technical_properties"]["km_boundaries"][0] < controlled_tram.km_pos else 0
             if pg.K_UP in keydowns: 
                 controlled_tram.km_pos += 1 if controlled_tram.parameters["technical_properties"]["km_boundaries"][1] > controlled_tram.km_pos else 0
-
-            for element in controlled_tram.driver_panel_element_states:
-                if controlled_tram.parameters["graphical_properties"]["panel_elements_information"][element]["type"] in controlled_tram.parameters["graphical_properties"]["clickable_ui_elements"]:
-                    element_state = str(controlled_tram.driver_panel_element_states[element])
-                    full_info = controlled_tram.parameters["graphical_properties"]["panel_elements_information"][element]
-                    if m_pos[0] > w/2-panel.get_width()/2+(full_info["states"][element_state]["pos"][0])*scale and m_pos[1] > h-panel.get_height()+(full_info["states"][element_state]["pos"][1])*scale and m_pos[0] < w/2-panel.get_width()/2+(full_info["states"][element_state]["pos"][0]+full_info["states"][element_state]["collision_box"][0])*scale and m_pos[1] < h-panel.get_height()+(full_info["states"][element_state]["pos"][1]+full_info["states"][element_state]["collision_box"][1])*scale:
-                        if controlled_tram.parameters["graphical_properties"]["panel_elements_information"][element]["type"] == "switch" and mouse_clicked:  
-                            controlled_tram.driver_panel_element_states[element] = "off" if controlled_tram.driver_panel_element_states[element] == "on" else "on"
-                            controlled_tram.train_flags[full_info["controlling"]] = True if controlled_tram.driver_panel_element_states[element] == "on" else False
-                        if full_info["type"] == "button":
-                            if (m_btn[0] or m_btn[2]):
-                                controlled_tram.driver_panel_element_states[element] = "on"
-                                controlled_tram.train_flags[full_info["controlling"]] = True
-                            else:
+            
+            if m_pos[0] > w/2-panel.get_width()/2 and m_pos[0] < w/2+panel.get_width()/2 and m_pos[1] > h-panel.get_height():
+                for element in controlled_tram.driver_panel_element_states:
+                    if controlled_tram.parameters["graphical_properties"]["panel_elements_information"][element]["type"] in controlled_tram.parameters["graphical_properties"]["clickable_ui_elements"]:
+                        element_state = str(controlled_tram.driver_panel_element_states[element])
+                        full_info = controlled_tram.parameters["graphical_properties"]["panel_elements_information"][element]
+                        if m_pos[0] > w/2-panel.get_width()/2+(full_info["states"][element_state]["pos"][0])*scale and m_pos[1] > h-panel.get_height()+(full_info["states"][element_state]["pos"][1])*scale and m_pos[0] < w/2-panel.get_width()/2+(full_info["states"][element_state]["pos"][0]+full_info["states"][element_state]["collision_box"][0])*scale and m_pos[1] < h-panel.get_height()+(full_info["states"][element_state]["pos"][1]+full_info["states"][element_state]["collision_box"][1])*scale:
+                            if controlled_tram.parameters["graphical_properties"]["panel_elements_information"][element]["type"] == "switch" and mouse_clicked:  
+                                controlled_tram.driver_panel_element_states[element] = "off" if controlled_tram.driver_panel_element_states[element] == "on" else "on"
+                                controlled_tram.train_flags[full_info["controlling"]] = True if controlled_tram.driver_panel_element_states[element] == "on" else False
+                            if full_info["type"] == "button":
+                                if (m_btn[0] or m_btn[2]):
+                                    controlled_tram.driver_panel_element_states[element] = "on"
+                                    controlled_tram.train_flags[full_info["controlling"]] = True
+                                else:
+                                    controlled_tram.driver_panel_element_states[element] = "off"
+                                    controlled_tram.train_flags[full_info["controlling"]] = False
+                            if full_info["type"] == "switch_reverser" and mouse_clicked:
+                                if m_btn[0] and controlled_tram.train_flags[full_info["controlling"]] < 1:
+                                    controlled_tram.driver_panel_element_states[element] += 1
+                                    controlled_tram.train_flags[full_info["controlling"]] += 1
+                                    controlled_tram.driving_direction += 1
+                                elif m_btn[2] and controlled_tram.train_flags[full_info["controlling"]] > -1:
+                                    controlled_tram.driver_panel_element_states[element] -= 1
+                                    controlled_tram.train_flags[full_info["controlling"]] -= 1
+                                    controlled_tram.driving_direction -= 1
+                        else:
+                            if full_info["type"] == "button" and not(m_btn[0] or m_btn[2]):
                                 controlled_tram.driver_panel_element_states[element] = "off"
                                 controlled_tram.train_flags[full_info["controlling"]] = False
-                        if full_info["type"] == "switch_reverser" and mouse_clicked:
-                            if m_btn[0] and controlled_tram.train_flags[full_info["controlling"]] < 1:
-                                controlled_tram.driver_panel_element_states[element] += 1
-                                controlled_tram.train_flags[full_info["controlling"]] += 1
-                                controlled_tram.driving_direction += 1
-                            elif m_btn[2] and controlled_tram.train_flags[full_info["controlling"]] > -1:
-                                controlled_tram.driver_panel_element_states[element] -= 1
-                                controlled_tram.train_flags[full_info["controlling"]] -= 1
-                                controlled_tram.driving_direction -= 1
-                    else:
-                        if full_info["type"] == "button" and not(m_btn[0] or m_btn[2]):
-                            controlled_tram.driver_panel_element_states[element] = "off"
-                            controlled_tram.train_flags[full_info["controlling"]] = False
+            else:
+                block_pos = (int((m_pos[0]+camera_pos[0]-w/2)/128)-(1 if (m_pos[0]+camera_pos[0]-w/2) < 0 else 0),int((m_pos[1]+camera_pos[1]-h/2)/128)-(1 if (m_pos[1]+camera_pos[1]-h/2) < 0 else 0))
+                if mouse_clicked and m_btn[0] and block_pos in track_switch_states:
+                    track_switch_states[block_pos] = not(track_switch_states[block_pos])
+                    for tram in trams:
+                        tram.track_switch_states = track_switch_states
 
 
         if pg.K_d in keydowns: debug = (debug+1)%3
@@ -278,6 +304,19 @@ while working:
                     h/2+offset_vertical-(size[1]-sprites[world[tile_coordinates]]["height"])/2-sprites[world[tile_coordinates]]["height"]
                 )
                 screen.blit(sprites[world[tile_coordinates]][0],tile_blit_coords)
+
+                if tile_coordinates == m_block_pos and "switch" in world[tile_coordinates]:
+                    if track_switch_states[m_block_pos]:
+                        screen.blit(pg.transform.rotate(pg.transform.flip(sprites["ui_switch_alt"][0],int(world[tile_coordinates][-1])%2==0,False),(int(world[tile_coordinates][-1])-1)//2*-90),tile_blit_coords)
+                    else:
+                        size = sprites["ui_switch_normal"][0].get_size()
+                        tile_blit_coords = (
+                            w/2+offset_horizontal-size[0]/2,
+                            h/2+offset_vertical-(size[1]-sprites[world[tile_coordinates]]["height"])/2-sprites[world[tile_coordinates]]["height"]
+                        )
+                        if int(world[tile_coordinates][-1]) in [3,4,7,8]:screen.blit(sprites["ui_switch_normal"][0],tile_blit_coords)
+                        else:screen.blit(pg.transform.rotate(sprites["ui_switch_normal"][0],90),tile_blit_coords)
+
             tile_blit_coords = (
                 base_tile_blit_coords[0],
                 base_tile_blit_coords[1]#+128*math.cos(math.radians(self.angle))-size[1]
@@ -340,7 +379,7 @@ while working:
                 info_blit_list.append(font.render(f"velocity: {controlled_tram.velocity}",True,(0,0,0)))
 
         if debug > 0:
-            info_blit_list.append(font.render(f"x:{pos[0]} y:{pos[1]}",True,(0,0,0)))
+            info_blit_list.append(font.render(f"x:{player_pos[0]} y:{player_pos[1]}",True,(0,0,0)))
             pg.draw.rect(screen,(255,0,0),(w/2-4,h/2-4,8,8))
         info_blit_list.append(font.render("fps: "+str(int(clock.get_fps())), False, ((255 if clock.get_fps() < 45 else 0), (255 if clock.get_fps() > 15 else 0), 0)))
         for i, line in enumerate(info_blit_list):
@@ -359,6 +398,9 @@ while working:
             camera_pos[0]+=speed
         if pressed[pg.K_ESCAPE]:
             game_state = "main"
+        if pg.K_q in keydowns:
+            print(world)
+            print(track_switch_states)
         
         
         m_pos = pg.mouse.get_pos()
@@ -366,31 +408,26 @@ while working:
         if pg.K_d in keydowns: debug = (debug+1)%3
         
         if mouse_clicked:
-            if not(editing_tab == 0 and m_pos[0] > w/2-128*2.5 and m_pos[0] < w/2+128*2.5 and m_pos[1] > h-128) and not(editing_tab == 1 and m_pos[0] > w/2-128*4.5 and m_pos[0] < w/2+128*4.5 and m_pos[1] > h-128): 
+            if not(m_pos[0] > w/2-64*(len(tools[editing_tab])+1) and m_pos[0] < w/2+64*(len(tools[editing_tab])+1) and m_pos[1] > h-128): 
                 block_pos = (int((m_pos[0]+camera_pos[0]-w/2)/128)-(1 if (m_pos[0]+camera_pos[0]-w/2) < 0 else 0),int((m_pos[1]+camera_pos[1]-h/2)/128)-(1 if (m_pos[1]+camera_pos[1]-h/2) < 0 else 0))
                 if m_btn[0] and not m_btn[2] and tool != -1:
-                    tools = [["track_straight_horizontal","track_straight_vertical","track_diagonal_a","track_diagonal_b"],["track_curve_1","track_curve_2","track_curve_3","track_curve_4","track_curve_5","track_curve_6","track_curve_7","track_curve_8"]]
                     world[block_pos] = tools[editing_tab][tool]
+                    if "switch" in tools[editing_tab][tool]:
+                        track_switch_states[block_pos] = False
                 elif m_btn[2] and not m_btn[0]:
                     if block_pos in world: 
                         world.pop(block_pos)
+                    
+                    if block_pos in track_switch_states:
+                        track_switch_states.pop(block_pos)
             else:
-                if editing_tab == 0:
-                    selected_item = int((m_pos[0]-w/2+128*2.5)//128)
-                    if selected_item < 4: 
-                        if tool != selected_item:tool = selected_item
-                        else: tool=-1
-                    else:
-                        if m_pos[1] < h-64:editing_tab =1
-                        else:editing_tab+=1
-                elif editing_tab == 1:
-                    selected_item = int((m_pos[0]-w/2+128*4.5)//128)
-                    if selected_item < 8: 
-                        if tool != selected_item:tool = selected_item
-                        else: tool=-1
-                    else:
-                        if m_pos[1] < h-64:editing_tab -=1
-                        else:editing_tab=0
+                selected_item = int((m_pos[0]-w/2+64*(len(tools[editing_tab])+1))//128)
+                if selected_item < len(tools[editing_tab]): 
+                    if tool != selected_item:tool = selected_item
+                    else: tool=-1
+                else:
+                    if m_pos[1] < h-64:editing_tab=(editing_tab-1)%len(tools)
+                    else:editing_tab=(editing_tab+1)%len(tools)
             
 
         screen.fill((128,128,128))
@@ -439,24 +476,15 @@ while working:
                     pos = font.render(f"{tile_coordinates[0]}:{tile_coordinates[1]}",True,(0,0,0))
                     screen.blit(pos,[centered_coords[0]-pos.get_width()/2,centered_coords[1]+pos.get_height()])
         
-        if editing_tab == 0:
-            pg.draw.rect(screen,(196,196,196),(w/2-128*2.5,h-128,128*5,128))
-            for e,i in enumerate(["track_straight_horizontal","track_straight_vertical","track_diagonal_a","track_diagonal_b"]):
-                screen.blit(pg.transform.scale(sprites[i][0],(128,128)),(w/2-128*2.5+e*128,h-128))
-                pg.draw.rect(screen,(255,255,255) if e==tool else (32,32,32),(w/2-128*2.5+e*128,h-128,128,128),4)
-            pg.draw.rect(screen,(32,32,32),(w/2+128*1.5,h-128,128,64),4)
-            pg.draw.rect(screen,(32,32,32),(w/2+128*1.5,h-64,128,64),4)
-            pg.draw.polygon(screen,(32,32,32),((w/2+128*1.5+64,h-128+16),(w/2+128*1.5+64+32,h-128+48),(w/2+128*1.5+64-32,h-128+48)))
-            pg.draw.polygon(screen,(32,32,32),((w/2+128*1.5+64,h-16),(w/2+128*1.5+64+32,h-48),(w/2+128*1.5+64-32,h-48)))
-        elif editing_tab == 1:
-            pg.draw.rect(screen,(196,196,196),(w/2-128*4.5,h-128,128*9,128))
-            for e,i in enumerate(["track_curve_1","track_curve_2","track_curve_3","track_curve_4","track_curve_5","track_curve_6","track_curve_7","track_curve_8"]):
-                screen.blit(pg.transform.scale(sprites[i][0],(128,128)),(w/2-128*4.5+e*128,h-128))
-                pg.draw.rect(screen,(255,255,255) if e==tool else (32,32,32),(w/2-128*4.5+e*128,h-128,128,128),4)
-            pg.draw.rect(screen,(32,32,32),(w/2+128*3.5,h-128,128,64),4)
-            pg.draw.rect(screen,(32,32,32),(w/2+128*3.5,h-64,128,64),4)
-            pg.draw.polygon(screen,(32,32,32),((w/2+128*3.5+64,h-128+16),(w/2+128*3.5+64+32,h-128+48),(w/2+128*3.5+64-32,h-128+48)))
-            pg.draw.polygon(screen,(32,32,32),((w/2+128*3.5+64,h-16),(w/2+128*3.5+64+32,h-48),(w/2+128*3.5+64-32,h-48)))
+        length = len(tools[editing_tab])+1
+        pg.draw.rect(screen,(196,196,196),(w/2-64*length,h-128,128*length,128))
+        for e,i in enumerate(tools[editing_tab]):
+            screen.blit(pg.transform.scale(sprites[i][0],(128,128)),(w/2-64*length+e*128,h-128))
+            pg.draw.rect(screen,(255,255,255) if e==tool else (32,32,32),(w/2-64*length+e*128,h-128,128,128),4)
+        pg.draw.rect(screen,(32,32,32),(w/2+64*(length-2),h-128,128,64),4)
+        pg.draw.rect(screen,(32,32,32),(w/2+64*(length-2),h-64,128,64),4)
+        pg.draw.polygon(screen,(32,32,32),((w/2+64*(length-2)+64,h-128+16),(w/2+64*(length-2)+64+32,h-128+48),(w/2+64*(length-2)+64-32,h-128+48)))
+        pg.draw.polygon(screen,(32,32,32),((w/2+64*(length-2)+64,h-16),(w/2+64*(length-2)+64+32,h-48),(w/2+64*(length-2)+64-32,h-48)))
 
 
     elif game_state == "main":
