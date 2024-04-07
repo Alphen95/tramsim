@@ -161,7 +161,7 @@ class Tram():
                     y_diff = self.pos[1]-self.block_pos[1]*128
                     if world[self.block_pos] == "track_switch_1":
                         if y_diff > 109 and y_diff < 112:
-                            if self.track_switch_states[self.block_pos] and not(self.angle%180==90 and self.movement_direction < 0):
+                            if self.track_switch_states[self.block_pos] and not(self.angle==90 and self.movement_direction < 0) and not(self.angle==270 and self.movement_direction > 0):
                                 movement_scheme = "track_curve_1" 
                         else:
                             if self.angle%180==90:
@@ -170,7 +170,7 @@ class Tram():
                                 movement_scheme = "track_curve_1" 
                     elif world[self.block_pos] == "track_switch_2":
                         if y_diff > 109 and y_diff < 112:
-                            if self.track_switch_states[self.block_pos] and not(self.angle%180==0 and self.movement_direction < 0):
+                            if self.track_switch_states[self.block_pos] and not(self.angle==90 and self.movement_direction < 0) and not(self.angle==270 and self.movement_direction > 0):
                                 movement_scheme = "track_curve_2" 
                         else:
                             if self.angle%180==90:
@@ -179,7 +179,7 @@ class Tram():
                                 movement_scheme = "track_curve_2" 
                     elif world[self.block_pos] == "track_switch_3":
                         if x_diff > 16 and x_diff < 19:
-                            if self.track_switch_states[self.block_pos] and not(self.angle%180==0 and self.movement_direction < 0):
+                            if self.track_switch_states[self.block_pos] and not(self.angle==0 and self.movement_direction < 0) and not(self.angle==180 and self.movement_direction > 0):
                                 movement_scheme = "track_curve_3" 
                         else:
                             if self.angle%180==0:
@@ -188,7 +188,7 @@ class Tram():
                                 movement_scheme = "track_curve_3" 
                     elif world[self.block_pos] == "track_switch_4":
                         if x_diff > 16 and x_diff < 19:
-                            if self.track_switch_states[self.block_pos] and not(self.angle%180==0 and self.movement_direction > 0):
+                            if self.track_switch_states[self.block_pos] and not(self.angle==0 and self.movement_direction < 0) and not(self.angle==180 and self.movement_direction > 0):
                                 movement_scheme = "track_curve_4" 
                         else:
                             if self.angle%180==0:
@@ -197,7 +197,7 @@ class Tram():
                                 movement_scheme = "track_curve_4" 
                     elif world[self.block_pos] == "track_switch_5":
                         if y_diff > 16 and y_diff < 19:
-                            if self.track_switch_states[self.block_pos] and not(self.angle%180==90 and self.movement_direction < 0):
+                            if self.track_switch_states[self.block_pos] and not(self.angle==90 and self.movement_direction < 0) and not(self.angle==270 and self.movement_direction > 0):
                                 movement_scheme = "track_curve_5" 
                         else:
                             if self.angle%180==90:
@@ -206,7 +206,7 @@ class Tram():
                                 movement_scheme = "track_curve_5" 
                     elif world[self.block_pos] == "track_switch_6":
                         if y_diff > 16 and y_diff < 19:
-                            if self.track_switch_states[self.block_pos] and not(self.angle%180==0 and self.movement_direction < 0):
+                            if self.track_switch_states[self.block_pos] and not(self.angle==90 and self.movement_direction < 0) and not(self.angle==270 and self.movement_direction > 0):
                                 movement_scheme = "track_curve_6" 
                         else:
                             if self.angle%180==90:
@@ -215,7 +215,7 @@ class Tram():
                                 movement_scheme = "track_curve_6" 
                     elif world[self.block_pos] == "track_switch_7":
                         if x_diff > 109 and x_diff < 112:
-                            if self.track_switch_states[self.block_pos] and not(self.angle%180==0 and self.movement_direction < 0):
+                            if self.track_switch_states[self.block_pos] and not(self.angle==0 and self.movement_direction > 0) and not(self.angle==180 and self.movement_direction < 0):
                                 movement_scheme = "track_curve_7" 
                         else:
                             if self.angle%180==0:
@@ -224,7 +224,7 @@ class Tram():
                                 movement_scheme = "track_curve_7" 
                     elif world[self.block_pos] == "track_switch_8":
                         if x_diff > 109 and x_diff < 112:
-                            if self.track_switch_states[self.block_pos] and not(self.angle%180==0 and self.movement_direction > 0):
+                            if self.track_switch_states[self.block_pos] and not(self.angle==0 and self.movement_direction > 0) and not(self.angle==180 and self.movement_direction < 0):
                                 movement_scheme = "track_curve_8" 
                         else:
                             if self.angle%180==0:

@@ -6,7 +6,7 @@ import pathlib
 #from player import Player
 from tram import Tram
 
-version = "0.4.5"
+version = "0.4.5.1"
 CURRENT_DIRECTORY = pathlib.Path(__file__).parent.resolve()
 current_dir = CURRENT_DIRECTORY
 MAPPING = [(8, -8), (7, -8), (8, -7), (6, -8), (7, -7), (8, -6), (5, -8), (6, -7), (7, -6), (8, -5), (4, -8), (5, -7), (6, -6), (7, -5), (8, -4), (3, -8), (4, -7), (5, -6), (6, -5), (7, -4), (8, -3), (2, -8), (3, -7), (4, -6), (5, -5), (6, -4), (7, -3), (8, -2), (1, -8), (2, -7), (3, -6), (4, -5), (5, -4), (6, -3), (7, -2), (8, -1), (0, -8), (1, -7), (2, -6), (3, -5), (4, -4), (5, -3), (6, -2), (7, -1), (8, 0), (-1, -8), (0, -7), (1, -6), (2, -5), (3, -4), (4, -3), (5, -2), (6, -1), (7, 0), (8, 1), (-2, -8), (-1, -7), (0, -6), (1, -5), (2, -4), (3, -3), (4, -2), (5, -1), (6, 0), (7, 1), (8, 2), (-3, -8), (-2, -7), (-1, -6), (0, -5), (1, -4), (2, -3), (3, -2), (4, -1), (5, 0), (6, 1), (7, 2), (8, 3), (-4, -8), (-3, -7), (-2, -6), (-1, -5), (0, -4), (1, -3), (2, -2), (3, -1), (4, 0), (5, 1), (6, 2), (7, 3), (8, 4), (-5, -8), (-4, -7), (-3, -6), (-2, -5), (-1, -4), (0, -3), (1, -2), (2, -1), (3, 0), (4, 1), (5, 2), (6, 3), (7, 4), (8, 5), (-6, -8), (-5, -7), (-4, -6), (-3, -5), (-2, -4), (-1, -3), (0, -2), (1, -1), (2, 0), (3, 1), (4, 2), (5, 3), (6, 4), (7, 5), (8, 6), (-7, -8), (-6, -7), (-5, -6), (-4, -5), (-3, -4), (-2, -3), (-1, -2), (0, -1), (1, 0), (2, 1), (3, 2), (4, 3), (5, 4), (6, 5), (7, 6), (8, 7), (-8, -8), (-7, -7), (-6, -6), (-5, -5), (-4, -4), (-3, -3), (-2, -2), (-1, -1), (0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (-8, -7), (-7, -6), (-6, -5), (-5, -4), (-4, -3), (-3, -2), (-2, -1), (-1, 0), (0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (-8, -6), (-7, -5), (-6, -4), (-5, -3), (-4, -2), (-3, -1), (-2, 0), (-1, 1), (0, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 7), (6, 8), (-8, -5), (-7, -4), (-6, -3), (-5, -2), (-4, -1), (-3, 0), (-2, 1), (-1, 2), (0, 3), (1, 4), (2, 5), (3, 6), (4, 7), (5, 8), (-8, -4), (-7, -3), (-6, -2), (-5, -1), (-4, 0), (-3, 1), (-2, 2), (-1, 3), (0, 4), (1, 5), (2, 6), (3, 7), (4, 8), (-8, -3), (-7, -2), (-6, -1), (-5, 0), (-4, 1), (-3, 2), (-2, 3), (-1, 4), (0, 5), (1, 6), (2, 7), (3, 8), (-8, -2), (-7, -1), (-6, 0), (-5, 1), (-4, 2), (-3, 3), (-2, 4), (-1, 5), (0, 6), (1, 7), (2, 8), (-8, -1), (-7, 0), (-6, 1), (-5, 2), (-4, 3), (-3, 4), (-2, 5), (-1, 6), (0, 7), (1, 8), (-8, 0), (-7, 1), (-6, 2), (-5, 3), (-4, 4), (-3, 5), (-2, 6), (-1, 7), (0, 8), (-8, 1), (-7, 2), (-6, 3), (-5, 4), (-4, 5), (-3, 6), (-2, 7), (-1, 8), (-8, 2), (-7, 3), (-6, 4), (-5, 5), (-4, 6), (-3, 7), (-2, 8), (-8, 3), (-7, 4), (-6, 5), (-5, 6), (-4, 7), (-3, 8), (-8, 4), (-7, 5), (-6, 6), (-5, 7), (-4, 8), (-8, 5), (-7, 6), (-6, 7), (-5, 8), (-8, 6), (-7, 7), (-6, 8), (-8, 7), (-7, 8), (-8, 8)]
@@ -21,8 +21,7 @@ with open(os.path.join(CURRENT_DIRECTORY,"res","sprite_list.json")) as f:
     sprite_list = json.loads(f.read())
 
 world = {}
-#world = {(-1, 1): 'track_straight_horizontal', (0, 1): 'track_straight_horizontal', (-1, -2): 'track_straight_horizontal', (0, -2): 'track_straight_horizontal', (-3, -2): 'track_straight_horizontal', (-3, 1): 'track_straight_horizontal', (2, 1): 'track_straight_horizontal', (2, -2): 'track_straight_horizontal', (-5, -1): 'track_curve_1', (-3, -1): 'track_curve_1', (2, -1): 'track_curve_2', (4, -1): 'track_curve_2', (-5, 0): 'track_curve_6', (-3, 0): 'track_curve_6', (2, 0): 'track_curve_5', (4, 0): 'track_curve_5', (-4, 1): 'track_curve_7', (-4, -2): 'track_curve_8', (3, -2): 'track_curve_3', (3, 1): 'track_curve_4', (1, 1): 'track_switch_4', (1, -2): 'track_switch_3', (-2, 1): 'track_switch_7', (-2, -2): 'track_switch_8'}
-track_switch_states = {} #{(1, 1): False, (1, -2): False, (-2, 1): False, (-2, -2): False}
+track_switch_states = {}
 
 #world = {(2,5):"house",(3,5):"house",(4,5):"house_widewindows",(5,5):"house",(6,5):"house"}
 
@@ -185,13 +184,13 @@ while working:
 
         if controlling_tram_id == -1 or controlled_tram == []:
             if pressed[pg.K_DOWN]: 
-                player_pos[1]+=speed
+                player_pos[1]+=speed*clock.get_fps()/60
             if pressed[pg.K_UP]: 
-                player_pos[1]-=speed
+                player_pos[1]-=speed*clock.get_fps()/60
             if pressed[pg.K_LEFT]: 
-                player_pos[0]-=speed
+                player_pos[0]-=speed*clock.get_fps()/60
             if pressed[pg.K_RIGHT]: 
-                player_pos[0]+=speed
+                player_pos[0]+=speed*clock.get_fps()/60
             if pg.K_ESCAPE in keydowns:
                 game_state = "main"
             if pg.K_s in keydowns:
@@ -200,9 +199,10 @@ while working:
                     tile = world[block_pos]
                     if tile == "track_straight_horizontal":
                         trams.append(Tram([block_pos[0]*128+64,block_pos[1]*128+64],world,tram_info["ktm5m4"],track_switch_states))
+                        trams[-1].angle = 180 if pressed[pg.K_LALT] else 0
                     if tile == "track_straight_vertical":
                         trams.append(Tram([block_pos[0]*128+64,block_pos[1]*128+64],world,tram_info["ktm5m4"],track_switch_states))
-                        trams[-1].angle = 90
+                        trams[-1].angle = 270 if pressed[pg.K_LALT] else 90
 
             if mouse_clicked:
                 chose_tram = False
@@ -357,6 +357,8 @@ while working:
 
         info_blit_list = []
         info_blit_list.append(font.render(version,True,(0,0,0)))
+        if debug > 0:
+            info_blit_list.append(font.render(f"tramcars: {len(trams)}",True,(0,0,0)))
 
         w,h = screen.get_size()
         if controlled_tram != []:
@@ -389,13 +391,13 @@ while working:
         speed = 4 if pressed[pg.K_LSHIFT] else 1
 
         if pressed[pg.K_DOWN]: 
-            camera_pos[1]+=speed
+            camera_pos[1]+=speed*clock.get_fps()/60
         if pressed[pg.K_UP]: 
-            camera_pos[1]-=speed
+            camera_pos[1]-=speed*clock.get_fps()/60
         if pressed[pg.K_LEFT]: 
-            camera_pos[0]-=speed
+            camera_pos[0]-=speed*clock.get_fps()/60
         if pressed[pg.K_RIGHT]: 
-            camera_pos[0]+=speed
+            camera_pos[0]+=speed*clock.get_fps()/60
         if pressed[pg.K_ESCAPE]:
             game_state = "main"
         if pg.K_q in keydowns:
