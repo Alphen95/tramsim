@@ -152,101 +152,108 @@ class Tram():
             self.train_flags["speedometer_right"] = int(self.velocity*3.6)%10
 
             #movement block
-            self.block_pos = (int((self.pos[0]-(127 if self.pos[0]< 0 else 0))/128),int((self.pos[1]-(127 if self.pos[1]< 0 else 0))/128))
-            if self.block_pos in world and "track" in world[self.block_pos]:
+            #decodings: 
+            # tstZ = Track STraight type Z (Z = 0-3)
+            # tcuZ = Track CUrved type Z (Z = 0-7)
+            # tswZ = Track SWitch type Z (Z = 0-F)
+            # tcrZ = Track CRossing type Z (Z = 0-F)
 
-                if not "switch" in world[self.block_pos]: movement_scheme = world[self.block_pos]
+            self.block_pos = (int((self.pos[0]-(127 if self.pos[0]< 0 else 0))/128),int((self.pos[1]-(127 if self.pos[1]< 0 else 0))/128))
+            
+            if self.block_pos in world and world[self.block_pos][-4:-1] in ["tst","tcu","tsw","tcr"]:
+                tile_contents = world[self.block_pos][-4:]
+
+                if tile_contents[:-1] != "tsw": movement_scheme = tile_contents
                 else:
                     x_diff = self.pos[0]-self.block_pos[0]*128
                     y_diff = self.pos[1]-self.block_pos[1]*128
-                    if world[self.block_pos] == "track_switch_1":
+                    if tile_contents == "tsw0":
                         if y_diff > 109 and y_diff < 112:
                             if self.track_switch_states[self.block_pos] and not(self.angle==90 and self.movement_direction < 0) and not(self.angle==270 and self.movement_direction > 0):
-                                movement_scheme = "track_curve_1" 
+                                movement_scheme = "tcu0" 
                         else:
                             if self.angle%180==90:
-                                movement_scheme = "track_straight_vertical"
+                                movement_scheme = "tst0"
                             else:
-                                movement_scheme = "track_curve_1" 
-                    elif world[self.block_pos] == "track_switch_2":
+                                movement_scheme = "tcu0" 
+                    elif tile_contents == "tsw1":
                         if y_diff > 109 and y_diff < 112:
                             if self.track_switch_states[self.block_pos] and not(self.angle==90 and self.movement_direction < 0) and not(self.angle==270 and self.movement_direction > 0):
-                                movement_scheme = "track_curve_2" 
+                                movement_scheme = "tcu1" 
                         else:
                             if self.angle%180==90:
-                                movement_scheme = "track_straight_vertical"
+                                movement_scheme = "tst0"
                             else:
-                                movement_scheme = "track_curve_2" 
-                    elif world[self.block_pos] == "track_switch_3":
+                                movement_scheme = "tcu1" 
+                    elif tile_contents == "tsw2":
                         if x_diff > 16 and x_diff < 19:
                             if self.track_switch_states[self.block_pos] and not(self.angle==0 and self.movement_direction < 0) and not(self.angle==180 and self.movement_direction > 0):
-                                movement_scheme = "track_curve_3" 
+                                movement_scheme = "tcu2" 
                         else:
                             if self.angle%180==0:
-                                movement_scheme = "track_straight_horizontal"
+                                movement_scheme = "tst1"
                             else:
-                                movement_scheme = "track_curve_3" 
-                    elif world[self.block_pos] == "track_switch_4":
+                                movement_scheme = "tcu2" 
+                    elif tile_contents == "tsw3":
                         if x_diff > 16 and x_diff < 19:
                             if self.track_switch_states[self.block_pos] and not(self.angle==0 and self.movement_direction < 0) and not(self.angle==180 and self.movement_direction > 0):
-                                movement_scheme = "track_curve_4" 
+                                movement_scheme = "tcu3" 
                         else:
                             if self.angle%180==0:
-                                movement_scheme = "track_straight_horizontal"
+                                movement_scheme = "tst1"
                             else:
-                                movement_scheme = "track_curve_4" 
-                    elif world[self.block_pos] == "track_switch_5":
+                                movement_scheme = "tcu3" 
+                    elif tile_contents == "tsw4":
                         if y_diff > 16 and y_diff < 19:
                             if self.track_switch_states[self.block_pos] and not(self.angle==90 and self.movement_direction < 0) and not(self.angle==270 and self.movement_direction > 0):
-                                movement_scheme = "track_curve_5" 
+                                movement_scheme = "tcu4" 
                         else:
                             if self.angle%180==90:
-                                movement_scheme = "track_straight_vertical"
+                                movement_scheme = "tst0"
                             else:
-                                movement_scheme = "track_curve_5" 
-                    elif world[self.block_pos] == "track_switch_6":
+                                movement_scheme = "tsw4" 
+                    elif tile_contents == "tsw5":
                         if y_diff > 16 and y_diff < 19:
                             if self.track_switch_states[self.block_pos] and not(self.angle==90 and self.movement_direction < 0) and not(self.angle==270 and self.movement_direction > 0):
-                                movement_scheme = "track_curve_6" 
+                                movement_scheme = "tcu5" 
                         else:
                             if self.angle%180==90:
-                                movement_scheme = "track_straight_vertical"
+                                movement_scheme = "tst0"
                             else:
-                                movement_scheme = "track_curve_6" 
-                    elif world[self.block_pos] == "track_switch_7":
+                                movement_scheme = "tcu5" 
+                    elif tile_contents == "tsw6":
                         if x_diff > 109 and x_diff < 112:
                             if self.track_switch_states[self.block_pos] and not(self.angle==0 and self.movement_direction > 0) and not(self.angle==180 and self.movement_direction < 0):
-                                movement_scheme = "track_curve_7" 
+                                movement_scheme = "tcu6" 
                         else:
                             if self.angle%180==0:
-                                movement_scheme = "track_straight_horizontal"
+                                movement_scheme = "tst1"
                             else:
-                                movement_scheme = "track_curve_7" 
-                    elif world[self.block_pos] == "track_switch_8":
+                                movement_scheme = "tcu6" 
+                    elif tile_contents == "tsw7":
                         if x_diff > 109 and x_diff < 112:
                             if self.track_switch_states[self.block_pos] and not(self.angle==0 and self.movement_direction > 0) and not(self.angle==180 and self.movement_direction < 0):
-                                movement_scheme = "track_curve_8" 
+                                movement_scheme = "tcu7" 
                         else:
                             if self.angle%180==0:
-                                movement_scheme = "track_straight_horizontal"
+                                movement_scheme = "tst1"
                             else:
-                                movement_scheme = "track_curve_8" 
+                                movement_scheme = "tcu7" 
 
 
-                if movement_scheme == "track_straight_horizontal":
+                if movement_scheme == "tst0":
                     if self.angle == 0 or self.angle == 180:
                         if self.pos[1] > self.block_pos[1]*128+64:
                             self.pos[1] -= 0.2
                         if self.pos[1] < self.block_pos[1]*128+64:
                             self.pos[1] += 0.2
-                elif movement_scheme == "track_straight_vertical":
+                elif movement_scheme == "tst1":
                     if self.angle == 90 or self.angle == 270:
                         if self.pos[0] > self.block_pos[0]*128+64:
                             self.pos[0] -= 0.2
                         if self.pos[0] < self.block_pos[0]*128+64:
                             self.pos[0] += 0.2
-                elif movement_scheme == "track_curve_3":
-                    
+                elif movement_scheme == "tcu2":
                     diff = self.pos[0]-self.block_pos[0]*128
                     if diff <= 16:
                         self.angle = 0 if self.angle >= 0 and self.angle <= 90 else 180
@@ -256,7 +263,7 @@ class Tram():
                         self.angle = 30 if self.angle >= 0 and self.angle <= 90 else 210
                     else:
                         self.angle = 45 if self.angle >= 0 and self.angle <= 90 else 225
-                elif movement_scheme == "track_curve_2":
+                elif movement_scheme == "tcu1":
                     diff = self.pos[1]-self.block_pos[1]*128
                     if diff >= 112:
                         self.angle = 90 if self.angle >= 0 and self.angle <= 90 else 270
@@ -266,7 +273,7 @@ class Tram():
                         self.angle = 60 if self.angle >= 0 and self.angle <= 90 else 240
                     else:
                         self.angle = 45 if self.angle >= 0 and self.angle <= 90 else 225
-                elif movement_scheme == "track_curve_5":
+                elif movement_scheme == "tcu4":
                     diff = self.pos[1]-self.block_pos[1]*128
                     if diff <= 16: 
                         self.angle = 90 if self.angle >= 90 and self.angle <= 180 else 270
@@ -276,7 +283,7 @@ class Tram():
                         self.angle = 120 if self.angle >= 90 and self.angle <= 180 else 300
                     else:
                         self.angle = 135 if self.angle >= 90 and self.angle <= 180 else 315
-                elif movement_scheme == "track_curve_4":
+                elif movement_scheme == "tcu3":
                     diff = self.pos[0]-self.block_pos[0]*128
                     if diff <= 16: 
                         self.angle = 180 if self.angle >= 90 and self.angle <= 180 else 0
@@ -286,7 +293,7 @@ class Tram():
                         self.angle = 150 if self.angle >= 90 and self.angle <= 180 else 330
                     else:
                         self.angle = 135 if self.angle >= 90 and self.angle <= 180 else 315
-                elif movement_scheme== "track_curve_7":
+                elif movement_scheme== "tcu6":
                     diff = self.pos[0]-self.block_pos[0]*128
                     if diff >= 112:
                         self.angle = 180 if self.angle >= 180 and self.angle <= 270 else 0
@@ -296,7 +303,7 @@ class Tram():
                         self.angle = 210 if self.angle >= 180 and self.angle <= 270 else 30
                     else:
                         self.angle = 225 if self.angle >= 180 and self.angle <= 270 else 45
-                elif movement_scheme == "track_curve_6":
+                elif movement_scheme == "tcu5":
                     diff = self.pos[1]-self.block_pos[1]*128
                     if diff <= 16:
                         self.angle = 270 if self.angle >= 180 and self.angle <= 270 else 90
@@ -306,7 +313,7 @@ class Tram():
                         self.angle = 240 if self.angle >= 180 and self.angle <= 270 else 60
                     else:
                         self.angle = 225 if self.angle >= 180 and self.angle <= 270 else 45
-                elif movement_scheme == "track_curve_1":
+                elif movement_scheme == "tcu0":
                     diff = self.pos[1]-self.block_pos[1]*128
                     if diff >= 112:
                         self.angle = 270 if self.angle >= 270 and self.angle <= 360 else 90
@@ -316,7 +323,7 @@ class Tram():
                         self.angle = 300 if self.angle >= 270 and self.angle <= 360 else 120
                     else:
                         self.angle = 315 if self.angle >= 270 and self.angle <= 360 else 135
-                elif movement_scheme == "track_curve_8":
+                elif movement_scheme == "tcu7":
                     diff = self.pos[0]-self.block_pos[0]*128
                     if diff >= 112:
                         self.angle = 360 if self.angle >= 270 and self.angle <= 360 or self.angle == 0 else 180
@@ -328,8 +335,8 @@ class Tram():
                         self.angle = 315 if self.angle >= 270 and self.angle <= 360 or self.angle == 0 else 135
             self.last_block_pos = () + self.block_pos
             self.angle = self.angle%360
-            self.pos[0]+=round(self.velocity*math.cos(math.radians(self.angle))*0.25*self.movement_direction,2)
-            self.pos[1]+=round(self.velocity*math.sin(math.radians(self.angle))*0.25*self.movement_direction,2)
+            self.pos[0]-=round(self.velocity*math.cos(math.radians(self.angle))*0.25*self.movement_direction,2)
+            self.pos[1]-=round(self.velocity*math.sin(math.radians(self.angle))*0.25*self.movement_direction,2)
 
             for element in self.driver_panel_element_states:
                 if self.parameters["graphical_properties"]["panel_elements_information"][element]["type"] == "lamp":

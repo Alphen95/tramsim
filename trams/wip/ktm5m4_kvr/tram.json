@@ -1,6 +1,6 @@
 {
-    "name":"KTM-5M4",
-    "system_name":"ktm5m4",
+    "name":"KTM-5M4 KVR (WIP)",
+    "system_name":"ktm5m4_kvr",
     "technical_properties":{
         "mass":18750, 
         "wheel_radius":0.355,
@@ -47,52 +47,52 @@
         "km_handle_texture_name":"ktm5m4_handle",
         "panel_scale":3,
         "panel_overlay_scale":0,
-        "km_handle_scale":3,
+        "km_handle_scale":2,
         "km_handle_draw_mapouts":{
-            "4":{"pos":[63,51]},
-            "3":{"pos":[63,57]},
-            "2":{"pos":[63,63]},
-            "1":{"pos":[63,69]},
-            "0":{"pos":[63,75]},
-            "-1":{"pos":[63,81]},
-            "-2":{"pos":[63,87]},
-            "-3":{"pos":[63,93]},
-            "-4":{"pos":[63,99]},
-            "-5":{"pos":[63,105]}
+            "4":{"pos":[63,32]},
+            "3":{"pos":[63,42]},
+            "2":{"pos":[63,48]},
+            "1":{"pos":[63,56]},
+            "0":{"pos":[63,64]},
+            "-1":{"pos":[63,72]},
+            "-2":{"pos":[63,80]},
+            "-3":{"pos":[63,88]},
+            "-4":{"pos":[63,96]},
+            "-5":{"pos":[63,104]}
         },
         "clickable_ui_elements":["button","switch","switch_reverser"],
         "panel_elements_file_path":["panel_parts.png"],
         "panel_elements_sprites_loading_info":[
-            {"name":"switch_on","pos":[1,1],"size":[12,20]},
-            {"name":"switch_off","pos":[14,1],"size":[12,18]},
-            {"name":"switch_neutral","pos":[1,41],"size":[12,14]},
-            {"name":"red_switch_on","pos":[92,22],"size":[12,20]},
-            {"name":"red_switch_off","pos":[105,22],"size":[12,18]},
-            {"name":"button_off","pos":[1,26],"size":[12,14]},
-            {"name":"button_on","pos":[14,26],"size":[12,14]},
-            {"name":"rk_lamp_off","pos":[27,17],"size":[12,13]},
-            {"name":"rk_lamp_on","pos":[40,17],"size":[12,13]},
-            {"name":"red_lamp_off","pos":[27,2],"size":[12,13]},
-            {"name":"red_lamp_on","pos":[40,2],"size":[12,13]},
-            {"name":"green_lamp_off","pos":[27,32],"size":[12,13]},
-            {"name":"green_lamp_on","pos":[40,32],"size":[12,13]},
-            {"name":"speedometer_1","pos":[53,1],"size":[12,20]},
-            {"name":"speedometer_2","pos":[66,1],"size":[12,20]},
-            {"name":"speedometer_3","pos":[79,1],"size":[12,20]},
-            {"name":"speedometer_4","pos":[53,22],"size":[12,20]},
-            {"name":"speedometer_5","pos":[66,22],"size":[12,20]},
-            {"name":"speedometer_6","pos":[79,22],"size":[12,20]},
-            {"name":"speedometer_7","pos":[53,43],"size":[12,20]},
-            {"name":"speedometer_8","pos":[66,43],"size":[12,20]},
-            {"name":"speedometer_9","pos":[79,43],"size":[12,20]},
-            {"name":"speedometer_0","pos":[92,1],"size":[12,20]}
+            {"name":"switch_on","pos":[1,1],"size":[12,20],"scale":3},
+            {"name":"switch_off","pos":[14,1],"size":[12,18],"scale":3},
+            {"name":"switch_neutral","pos":[1,41],"size":[12,14],"scale":3},
+            {"name":"red_switch_on","pos":[92,22],"size":[12,20],"scale":3},
+            {"name":"red_switch_off","pos":[105,22],"size":[12,18],"scale":3},
+            {"name":"button_off","pos":[1,26],"size":[12,14],"scale":3},
+            {"name":"button_on","pos":[14,26],"size":[12,14],"scale":3},
+            {"name":"rk_lamp_off","pos":[27,17],"size":[12,13],"scale":3},
+            {"name":"rk_lamp_on","pos":[40,17],"size":[12,13],"scale":3},
+            {"name":"red_lamp_off","pos":[27,2],"size":[12,13],"scale":3},
+            {"name":"red_lamp_on","pos":[40,2],"size":[12,13],"scale":3},
+            {"name":"green_lamp_off","pos":[27,32],"size":[12,13],"scale":3},
+            {"name":"green_lamp_on","pos":[40,32],"size":[12,13],"scale":3},
+            {"name":"speedometer_1","pos":[53,1],"size":[12,20],"scale":3},
+            {"name":"speedometer_2","pos":[66,1],"size":[12,20],"scale":3},
+            {"name":"speedometer_3","pos":[79,1],"size":[12,20],"scale":3},
+            {"name":"speedometer_4","pos":[53,22],"size":[12,20],"scale":3},
+            {"name":"speedometer_5","pos":[66,22],"size":[12,20],"scale":3},
+            {"name":"speedometer_6","pos":[79,22],"size":[12,20],"scale":3},
+            {"name":"speedometer_7","pos":[53,43],"size":[12,20],"scale":3},
+            {"name":"speedometer_8","pos":[66,43],"size":[12,20],"scale":3},
+            {"name":"speedometer_9","pos":[79,43],"size":[12,20],"scale":3},
+            {"name":"speedometer_0","pos":[92,1],"size":[12,20],"scale":3}
         ],
         "panel_elements_information":{
             "tumbler_doors_right":{
                 "type":"switch",
                 "states":{
-                    "on":{"texture":"switch_on","pos":[152,99],"collision_box":[12,20]},
-                    "off":{"texture":"switch_off","pos":[152,105],"collision_box":[12,18]}
+                    "on":{"texture":"switch_on","pos":[152,88],"collision_box":[12,20]},
+                    "off":{"texture":"switch_off","pos":[152,94],"collision_box":[12,18]}
                 },
                 "default_state":"off",
                 "controlling":"doors_r"
@@ -100,8 +100,8 @@
             "lamp_rk":{
                 "type":"lamp",
                 "states":{
-                    "True":{"texture":"rk_lamp_on","pos":[142,47]},
-                    "False":{"texture":"rk_lamp_off","pos":[142,47]}
+                    "True":{"texture":"rk_lamp_on","pos":[142,27]},
+                    "False":{"texture":"rk_lamp_off","pos":[142,27]}
                 },
                 "default_state":"off",
                 "condition_flag":"switching_states"
@@ -109,8 +109,8 @@
             "lamp_doors_closed":{
                 "type":"lamp",
                 "states":{
-                    "False":{"texture":"red_lamp_on","pos":[142,72]},
-                    "True":{"texture":"red_lamp_off","pos":[142,72]}
+                    "False":{"texture":"red_lamp_on","pos":[142,57]},
+                    "True":{"texture":"red_lamp_off","pos":[142,57]}
                 },
                 "default_state":"off",
                 "condition_flag":"doors_r"
@@ -118,8 +118,8 @@
             "lamp_doors_open":{
                 "type":"lamp",
                 "states":{
-                    "True":{"texture":"green_lamp_on","pos":[162,72]},
-                    "False":{"texture":"green_lamp_off","pos":[162,72]}
+                    "True":{"texture":"green_lamp_on","pos":[162,57]},
+                    "False":{"texture":"green_lamp_off","pos":[162,57]}
                 },
                 "default_state":"off",
                 "condition_flag":"doors_r"
@@ -127,8 +127,8 @@
             "lamp_rt":{
                 "type":"lamp",
                 "states":{
-                    "True":{"texture":"red_lamp_on","pos":[210,72]},
-                    "False":{"texture":"red_lamp_off","pos":[210,72]}
+                    "True":{"texture":"red_lamp_on","pos":[210,57]},
+                    "False":{"texture":"red_lamp_off","pos":[210,57]}
                 },
                 "default_state":"off",
                 "condition_flag":"magnet_brake_active"
@@ -136,8 +136,8 @@
             "button_rt":{
                 "type":"button",
                 "states":{
-                    "on":{"texture":"button_on","pos":[210,105],"collision_box":[12,14]},
-                    "off":{"texture":"button_off","pos":[210,105],"collision_box":[12,14]}
+                    "on":{"texture":"button_on","pos":[210,94],"collision_box":[12,14]},
+                    "off":{"texture":"button_off","pos":[210,94],"collision_box":[12,14]}
                 },
                 "default_state":"off",
                 "controlling":"magnet_brake_activation"
@@ -145,9 +145,9 @@
             "switch_reverser":{
                 "type":"switch_reverser",
                 "states":{
-                    "1":{"texture":"switch_on","pos":[26,45],"collision_box":[12,20]},
-                    "0":{"texture":"switch_neutral","pos":[26,51],"collision_box":[12,14]},
-                    "-1":{"texture":"switch_off","pos":[26,51],"collision_box":[12,18]}
+                    "1":{"texture":"switch_on","pos":[26,34],"collision_box":[12,20]},
+                    "0":{"texture":"switch_neutral","pos":[26,40],"collision_box":[12,14]},
+                    "-1":{"texture":"switch_off","pos":[26,40],"collision_box":[12,18]}
                 },
                 "default_state":0,
                 "controlling":"reverser"
@@ -155,8 +155,8 @@
             "switch_VB":{
                 "type":"switch",
                 "states":{
-                    "on":{"texture":"red_switch_on","pos":[26,86],"collision_box":[12,20]},
-                    "off":{"texture":"red_switch_off","pos":[26,92],"collision_box":[12,18]}
+                    "on":{"texture":"red_switch_on","pos":[26,75],"collision_box":[12,20]},
+                    "off":{"texture":"red_switch_off","pos":[26,81],"collision_box":[12,18]}
                 },
                 "default_state":"off",
                 "controlling":"batteries"
